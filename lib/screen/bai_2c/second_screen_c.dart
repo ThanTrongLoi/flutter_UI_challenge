@@ -37,11 +37,25 @@ class _SecondScreenAState extends State<SecondScreenC> {
       // columnNumber=[];
     }
 
+    // return Scaffold(
+    //   body: Row(
+    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //     children: columnNumber,
+    //   ),
+    // );
+
+    String _writeWidget(){
+      return ('Bai nay em nop sau nhaaa!!!!');
+    }
+
     return Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: columnNumber,
+      body: Center(
+        child: Container(
+          child: Text(_writeWidget()),
+        ),
       ),
     );
+
+
   }
 }
