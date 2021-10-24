@@ -1,5 +1,6 @@
 import 'package:baitap_200lab/values/app_assets.dart';
 import 'package:baitap_200lab/values/app_colors.dart';
+import 'package:baitap_200lab/values/app_data.dart';
 import 'package:baitap_200lab/values/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,60 @@ class MessagesPage extends StatefulWidget {
 }
 
 class _MessagesPageState extends State<MessagesPage> {
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+  static List<String> nameOnl = [
+    'Christopher',
+    'Reese',
+    'Jeffrey',
+    'Laura',
+    'Maldo'
+  ];
+  static List stt = [true, true, true, true, true];
+  static List img = [
+    'assets/images/av1.png',
+    'assets/images/av2.png',
+    'assets/images/av3.png',
+    'assets/images/av4.png',
+    'assets/images/av5.png'
+  ];
+  final List<DataModel> dataModel = List.generate(
+      nameOnl.length,
+      (index) => DataModel(
+          image: img[index], status: stt[index], name: nameOnl[index]));
 
+  static List<String> nameMess = [
+    'Herman Pope',
+    'Sue Caldwell',
+    'Ada Reyes',
+    'Hallie Sandoval',
+    'Dean Warren',
+    'Christopher',
+    'Reese',
+  ];
+  static List imgMess = [
+    'assets/images/ov1.png',
+    'assets/images/ov2.png',
+    'assets/images/ov3.png',
+    'assets/images/ov4.png',
+    'assets/images/ov5.png',
+    'assets/images/av1.png',
+    'assets/images/av2.png',
+  ];
+  static List<String> mess = [
+    'Hey! How\'s it going?',
+    'What kind of music do you like?',
+    'Sounds good to me!',
+    'Hi Tina. How\'s your night going?',
+    'What did you do over the weekend?',
+    'What kind of music do you like?',
+    'What kind of music do you like?',
+  ];
+  static List<String> time = [
+    '04:04AM','08:58PM','11:33PM','06:58PM','09:43PM','06:58PM','09:43PM'
+  ];
+  final List<DataMess> dataMess = List.generate(
+      nameMess.length,
+          (index) => DataMess(
+          image: imgMess[index], name: nameMess[index], time: time[index], mess: mess[index]));
   @override
   Widget build(BuildContext context) {
     final _sizeScreen = MediaQuery.of(context).size;
@@ -55,7 +107,7 @@ class _MessagesPageState extends State<MessagesPage> {
               // color: Colors.white,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: dataModel.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
@@ -72,26 +124,32 @@ class _MessagesPageState extends State<MessagesPage> {
                                     color: Colors.white,
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
-                                        image: NetworkImage(
-                                            'https://1.bp.blogspot.com/-Twt6J8icdmk/YDSkU71UcxI/AAAAAAAA8aU/tKvGodWcVwEY2YAampaCVDWgigDCS-OFQCLcBGAsYHQ/s0/Hinh-nen-iphone-cute%2B%25281%2529.jpg')))),
-                            Positioned(
-                                bottom: 3,
-                                right: 3,
-                                child: Container(
-                                  width: 14,
-                                  height: 14,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.statusOnl,
-                                      borderRadius: BorderRadius.circular(7),
-                                      border: Border.all(
-                                          width: 2, color: Colors.white)),
-                                ))
+                                        image:
+                                            AssetImage(dataModel[index].image)
+                                        // image: NetworkImage(
+                                        //     'https://1.bp.blogspot.com/-Twt6J8icdmk/YDSkU71UcxI/AAAAAAAA8aU/tKvGodWcVwEY2YAampaCVDWgigDCS-OFQCLcBGAsYHQ/s0/Hinh-nen-iphone-cute%2B%25281%2529.jpg')
+                                        ))),
+                            dataModel[index].status
+                                ? Positioned(
+                                    bottom: 3,
+                                    right: 3,
+                                    child: Container(
+                                      width: 14,
+                                      height: 14,
+                                      decoration: BoxDecoration(
+                                          color: AppColors.statusOnl,
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                          border: Border.all(
+                                              width: 2, color: Colors.white)),
+                                    ))
+                                : SizedBox.shrink()
                           ],
                         ),
                       ),
                       Container(
                           child: Text(
-                        'abcc',
+                        dataModel[index].name,
                         style: AppStyles.h3,
                       ))
                     ],
@@ -122,8 +180,7 @@ class _MessagesPageState extends State<MessagesPage> {
                                     // color: Colors.red,
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
-                                        image: NetworkImage(
-                                            'https://1.bp.blogspot.com/-Twt6J8icdmk/YDSkU71UcxI/AAAAAAAA8aU/tKvGodWcVwEY2YAampaCVDWgigDCS-OFQCLcBGAsYHQ/s0/Hinh-nen-iphone-cute%2B%25281%2529.jpg')))),
+                                        image: AssetImage(dataMess[index].image)))),
                             Positioned(
                                 bottom: 0,
                                 right: 4,
@@ -162,13 +219,12 @@ class _MessagesPageState extends State<MessagesPage> {
                         flex: 3,
                         child: Container(
                           decoration: BoxDecoration(
-                            // color: Colors.white,
+                              // color: Colors.white,
                               border: Border(
-                                  bottom: BorderSide(width: 1, color: Colors.black)
-                              )
-                          ),
+                                  bottom: BorderSide(
+                                      width: 1, color: Colors.black))),
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 20,top: 20),
+                            padding: const EdgeInsets.only(right: 20, top: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -176,17 +232,26 @@ class _MessagesPageState extends State<MessagesPage> {
                                     child: Row(
                                   children: [
                                     Text(
-                                      'Herman Pope',
-                                      style: TextStyle(color: AppColors.textColor,fontSize: 17),
+                                      dataMess[index].name,
+                                      style: TextStyle(
+                                          color: AppColors.textColor,
+                                          fontSize: 17),
                                     ),
-                                    Text('04:04AM',style: TextStyle(color: AppColors.unselectedItem, fontSize: 13),)
+                                    Text(
+                                      dataMess[index].time,
+                                      style: TextStyle(
+                                          color: AppColors.unselectedItem,
+                                          fontSize: 13),
+                                    )
                                   ],
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                 )),
                                 Expanded(
                                     child: Text(
-                                  'Hey! How\' it going?',
-                                  style: TextStyle(color: AppColors.textColor,fontSize: 17),
+                                  dataMess[index].mess,
+                                  style: TextStyle(
+                                      color: AppColors.textColor, fontSize: 17),
                                 ))
                               ],
                             ),
@@ -194,7 +259,7 @@ class _MessagesPageState extends State<MessagesPage> {
                         ))
                   ],
                 ));
-          }, childCount: 5))
+          }, childCount: dataMess.length))
         ],
       ),
     );
