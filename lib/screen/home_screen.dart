@@ -4,9 +4,11 @@ import 'package:baitap_200lab/screen/bai_2a/second_screen_a.dart';
 import 'package:baitap_200lab/screen/bai_2c/second_screen_c.dart';
 import 'package:baitap_200lab/screen/bai_2d/second_screen_d.dart';
 import 'package:baitap_200lab/screen/bai_3/third_screen.dart';
+// import 'package:baitap_200lab/screen/message/message_page.dart';
 import 'package:flutter/material.dart';
 
 import 'bai_2b/second_screen_b.dart';
+import 'message/main_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -52,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                 colors: Colors.blue,
               ),
               CustomButton(
-                onPress: (){Navigator.push(context,MaterialPageRoute(builder: (_)=>FirstScreen()));},
+                onPress: (){Navigator.push(context,MaterialPageRoute(builder: (_)=>MainScreen()));},
                 inputText: 'message',
                 colors: Colors.blue,
               ),
