@@ -69,8 +69,8 @@ class _MessagesPageState extends State<MessagesPage> {
           image: imgMess[index], name: nameMess[index], time: time[index], mess: mess[index]));
   @override
   Widget build(BuildContext context) {
-    final _sizeScreen = MediaQuery.of(context).size;
-    final _paddingScreen = MediaQuery.of(context).padding;
+    // final _sizeScreen = MediaQuery.of(context).size;
+    // final _paddingScreen = MediaQuery.of(context).padding;
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: CustomScrollView(
@@ -94,7 +94,7 @@ class _MessagesPageState extends State<MessagesPage> {
               ),
               titlePadding: EdgeInsets.only(left: 15, bottom: 25),
             ),
-            bottom: PreferredSize(
+            bottom: const PreferredSize(
               preferredSize: Size(double.infinity, 5),
               child: Divider(
                 color: Colors.black,
@@ -102,7 +102,7 @@ class _MessagesPageState extends State<MessagesPage> {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               height: 100,
               // color: Colors.white,
               child: ListView.builder(
@@ -143,15 +143,14 @@ class _MessagesPageState extends State<MessagesPage> {
                                           border: Border.all(
                                               width: 2, color: Colors.white)),
                                     ))
-                                : SizedBox.shrink()
+                                : const SizedBox.shrink()
                           ],
                         ),
                       ),
-                      Container(
-                          child: Text(
+                      Text(
                         dataModel[index].name,
                         style: AppStyles.h3,
-                      ))
+                      )
                     ],
                   );
                 },
@@ -161,7 +160,7 @@ class _MessagesPageState extends State<MessagesPage> {
           // Divider(color: Colors.black,),
           SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
-            return Container(
+            return SizedBox(
                 // color: Colors.white,
                 height: 100,
                 child: Row(
@@ -188,7 +187,7 @@ class _MessagesPageState extends State<MessagesPage> {
                                   width: 18,
                                   height: 18,
                                   decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                           colors: [
                                             AppColors.messNumTopRight,
                                             AppColors.messNumBottomLeft,
@@ -203,7 +202,7 @@ class _MessagesPageState extends State<MessagesPage> {
                                       borderRadius: BorderRadius.circular(9),
                                       border: Border.all(
                                           width: 1, color: Colors.white)),
-                                  child: Text(
+                                  child: const Text(
                                     '3',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -218,7 +217,7 @@ class _MessagesPageState extends State<MessagesPage> {
                     Expanded(
                         flex: 3,
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               // color: Colors.white,
                               border: Border(
                                   bottom: BorderSide(
@@ -233,13 +232,13 @@ class _MessagesPageState extends State<MessagesPage> {
                                   children: [
                                     Text(
                                       dataMess[index].name,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: AppColors.textColor,
                                           fontSize: 17),
                                     ),
                                     Text(
                                       dataMess[index].time,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: AppColors.unselectedItem,
                                           fontSize: 13),
                                     )
@@ -250,7 +249,7 @@ class _MessagesPageState extends State<MessagesPage> {
                                 Expanded(
                                     child: Text(
                                   dataMess[index].mess,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: AppColors.textColor, fontSize: 17),
                                 ))
                               ],

@@ -9,50 +9,67 @@ class SecondScreenC extends StatefulWidget {
 }
 
 class _SecondScreenAState extends State<SecondScreenC> {
-  @override
-  Widget build(BuildContext context) {
-    _containerWidget() {
-      return Expanded(
-          flex: 9,
-          child: Container(
-            color: Colors.pink,
-          ));
-    }
 
-    _spacerWidget() {
-      return Expanded(
-        flex: 1,
+  Widget _containerWidget() {
+    return Expanded(
+        flex: 9,
         child: Container(
-          color: Colors.white,
-        ),
-      );
-    }
+          color: Colors.pink,
+        ));
+  }
+
+  Widget _spacerWidget() {
+    return Expanded(
+      flex: 1,
+      child: Container(
+        color: Colors.white,
+      ),
+    );
+  }
+  List<Widget> columns(maxColumn){
     List<Widget>columnNumber = [];
-    int maxColumn = 5;
     for (int i = 0; i < maxColumn; i++){
       columnNumber.add(_containerWidget());
       if(i < maxColumn - 1){
         columnNumber.add(_spacerWidget());
       }
-      // columnNumber=[];
     }
+    return columnNumber;
+  }
 
-    // return Scaffold(
-    //   body: Row(
-    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //     children: columnNumber,
-    //   ),
-    // );
+  Widget wgColumns(nbcolumn){
+    return Expanded(
+      flex: 9,
+      child: Column(
+        children: columns(nbcolumn),
+      ),
+    );
+  }
 
-    String _writeWidget(){
-      return ('Bai nay em nop sau nhaaa!!!!');
+  List<Widget> boxs(nbrow, nbcolumn){
+    List<Widget> box = [];
+    for (int i = 0; i < nbrow; i++){
+      box.add(wgColumns(nbcolumn));
+      if (i < nbrow -1){
+        box.add(_spacerWidget());
+      }
     }
+    return box;
+  }
+
+  // return Scaffold(
+  //   body: Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: columnNumber,
+  //   ),
+  // );
+
+  @override
+  Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Center(
-        child: Container(
-          child: Text(_writeWidget()),
-        ),
+      body: Row(
+        children: boxs(6, 6),
       ),
     );
 

@@ -16,13 +16,37 @@ class MainScreen extends StatefulWidget {
 class _MainScreenPageState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  final tabs = [
-    Center(child: Text('Home')),
-    Center(child: Text('Streams')),
-    MessagesPage(),
-    Center(child: Text('Notifications')),
-    Center(child: Text('Profiles')),
+  final List <Widget> tabs = [
+    const Center(child: Text('Home')),
+    const Center(child: Text('Streams')),
+    const MessagesPage(),
+    const Center(child: Text('Notifications')),
+    const Center(child: Text('Profiles')),
   ];
+
+  final List<dynamic> bottoms = [
+    {
+      'label':'Home',
+      'color': Colors.blue
+    },
+    {
+      'label':'Streams',
+      'color': Colors.blue
+    },
+    {
+      'label':'Messages',
+      'color': Colors.blue
+    },
+    {
+      'label':'Notifications',
+      'color': Colors.blue
+    },
+    {
+      'label':'Profiles',
+      'color': Colors.blue
+    },
+  ];
+
 
   @override
   Widget build(BuildContext context) {
