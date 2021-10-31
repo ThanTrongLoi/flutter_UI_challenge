@@ -24,28 +24,11 @@ class _MainScreenPageState extends State<MainScreen> {
     const Center(child: Text('Profiles')),
   ];
 
-  final List<dynamic> bottoms = [
-    {
-      'label':'Home',
-      'color': Colors.blue
-    },
-    {
-      'label':'Streams',
-      'color': Colors.blue
-    },
-    {
-      'label':'Messages',
-      'color': Colors.blue
-    },
-    {
-      'label':'Notifications',
-      'color': Colors.blue
-    },
-    {
-      'label':'Profiles',
-      'color': Colors.blue
-    },
-  ];
+  // Widget _listBarItems (){
+  //   return BottomNavigationBarItem(icon: null
+  //
+  //   )
+  // }
 
 
   @override
